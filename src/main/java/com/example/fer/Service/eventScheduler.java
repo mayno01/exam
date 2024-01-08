@@ -1,23 +1,20 @@
-package com.example.fer.Service;
+package com.example.examenf.Services;
 
+import com.example.examenf.Repository.ICategorie;
+import lombok.AllArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import com.example.examenf.Entities.Categorie;
 import com.example.examenf.Entities.Evenement;
-import com.example.examenf.Repository.CategorieRepository;
+
 
 import java.util.List;
-
+@AllArgsConstructor
 @Component
 public class EventScheduler {
 
-    // hezi file hetha 7otih f code mta3k ( asn3ih file hetha kima heka ) 
+    private final ICategorie categorieRepository;
 
-    private final CategorieRepository categorieRepository;
-
-    public EventScheduler(CategorieRepository categorieRepository) {
-        this.categorieRepository = categorieRepository;
-    }
 
     @Scheduled(fixedRate = 15000) // Déclenche toutes les 15 secondes
     public void listeEvenementParCategorie() {
